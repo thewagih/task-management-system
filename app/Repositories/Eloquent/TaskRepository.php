@@ -4,7 +4,7 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Task;
 use App\Repositories\Interfaces\TaskRepositoryInterface;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class TaskRepository extends BaseRepository implements TaskRepositoryInterface
 {
@@ -13,8 +13,9 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
         parent::__construct($model);
     }
 
-    public function index() {
-        return $this->paginated(columns: ['id', 'title', 'description', 'status'], perPage:10, where: [ 'user_id' => auth()->id()]);
+    public function index()
+    {
+        return $this->paginated(columns: ['id', 'title', 'description', 'status'], perPage: 10, where: ['user_id' => Auth::user()->id]);
     }
 
     public function toggleStatus(int $id)
@@ -25,5 +26,4 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
 
         return $task;
     }
-
 }

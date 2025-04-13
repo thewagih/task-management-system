@@ -12,6 +12,7 @@ use App\Repositories\Eloquent\CarRepository;
 use App\Repositories\Eloquent\CityRepository;
 use App\Repositories\Eloquent\ContactRepository;
 use App\Repositories\Eloquent\CountryRepository;
+use App\Repositories\Eloquent\DashboardRepository;
 use App\Repositories\Eloquent\GovernorateRepository;
 use App\Repositories\Eloquent\NewsletterRepository;
 use App\Repositories\Eloquent\OrderRepository;
@@ -33,6 +34,7 @@ use App\Repositories\Interfaces\CarRepositoryInterface;
 use App\Repositories\Interfaces\CityRepositoryInterface;
 use App\Repositories\Interfaces\ContactRepositoryInterface;
 use App\Repositories\Interfaces\CountryRepositoryInterface;
+use App\Repositories\Interfaces\DashboardRepositoryInterface;
 use App\Repositories\Interfaces\GovernorateRepositoryInterface;
 use App\Repositories\Interfaces\NewsletterRepositoryInterface;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
@@ -55,6 +57,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);
         $this->app->bind(TaskRepositoryInterface::class, TaskRepository::class);
+        $this->app->bind(DashboardRepositoryInterface::class, DashboardRepository::class);
 
     }
 
